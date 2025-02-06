@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d572c;
+    color: white;
+    padding: 20px;
+  }
+  
+  .dark-mode-toggle {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-mode-toggle:hover {
+    background-color: gray;
+  }
+  
+  .dark-mode-toggle.active {
+    background-color: green;
+  }
