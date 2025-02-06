@@ -1,14 +1,17 @@
 import React from "react";
-import "./ServicesList.css";
+import { Row, Col } from "react-grid-system";
 import ServiceCard from "../molecules/ServiceCard";
+import "./ServicesList.css";
 
 const ServicesList = ({ services }) => {
   return (
-    <div className="services-list">
+    <Row>
       {services.map((service) => (
-        <ServiceCard key={service.id} service={service} />
+        <Col key={service.id} xs={12} sm={6} md={4}>
+          <ServiceCard service={service} />
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
 

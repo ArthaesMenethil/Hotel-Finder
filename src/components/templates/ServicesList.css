@@ -1,8 +1,10 @@
+.services-list-container {
+  padding-right: 20px;
+}
+
 .services-list {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-    padding: 20px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
