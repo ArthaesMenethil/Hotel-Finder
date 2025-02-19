@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Hotel-Finder/static/css/main.f91285fc.css",
-    "main.js": "/Hotel-Finder/static/js/main.89f15fd7.js",
+    "main.css": "/Hotel-Finder/static/css/main.b46f07c9.css",
+    "main.js": "/Hotel-Finder/static/js/main.d267ee5a.js",
     "index.html": "/Hotel-Finder/index.html",
-    "main.f91285fc.css.map": "/Hotel-Finder/static/css/main.f91285fc.css.map",
-    "main.89f15fd7.js.map": "/Hotel-Finder/static/js/main.89f15fd7.js.map"
+    "main.b46f07c9.css.map": "/Hotel-Finder/static/css/main.b46f07c9.css.map",
+    "main.d267ee5a.js.map": "/Hotel-Finder/static/js/main.d267ee5a.js.map"
   },
   "entrypoints": [
-    "static/css/main.f91285fc.css",
-    "static/js/main.89f15fd7.js"
+    "static/css/main.b46f07c9.css",
+    "static/js/main.d267ee5a.js"
   ]
 }
