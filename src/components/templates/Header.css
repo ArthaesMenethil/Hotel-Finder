@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2d572c;
+  color: #fff;
+  width: 100%;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  margin-left: 80px;
+  font-family: 'Vollkorn', serif;
+  font-weight: 700;
+}
+
+.dark-mode .header {
+  background-color: #1e1e1e;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  transition: transform 0.3s ease-in-out;
+  margin-right: 60px;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+
+.icon {
+  transition: color 0.3s ease-in-out;
+}
+
+.icon.moon {
+  color: #1e3a5f;
+}
+
+.icon.sun {
+  color: #ffd700;
+}
