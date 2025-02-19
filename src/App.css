@@ -1,25 +1,25 @@
-/* Общий контейнер приложения */
 .app-container {
   display: flex;
   flex-direction: column;
   background-color: #f9f9f9;
   min-height: 100vh;
+  padding-top: 60px;
 }
 
-/* Основной контейнер для фильтров и услуг */
 .main-content {
   display: flex;
-  flex-wrap: nowrap; /* На широких экранах элементы в одну строку */
+  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
   max-width: 1600px;
-  margin: 20px auto;
-  gap: 20px; /* Отступ между секциями */
+  margin: 20px;
+  gap: 20px;
+  margin-top: 100px;
 }
 
-/* Панель фильтров */
 .filter-section {
-  flex: 0 0 300px; /* Фиксированная ширина для фильтров */
+  flex: 0 0 300px;
   min-width: 250px;
   background: #fff;
   border-radius: 8px;
@@ -33,19 +33,16 @@
   font-weight: bold;
 }
 
-/* Услуги */
 .services-list-container {
-  flex: 1 1 auto; /* Услуги занимают оставшееся пространство */
+  flex: 1 1 auto;
 }
 
-/* Карточки услуг */
 .services-list {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивная сетка */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Тёмная тема */
 .dark-mode {
   background-color: #121212;
   color: #ffffff;
@@ -66,19 +63,58 @@
   color: #ffffff;
 }
 
-/* Адаптивная верстка для мобильных устройств */
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column; /* Вертикальная раскладка */
-  }
+/* Оверлей, затемняющий фон */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Затемнение */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
 
-  .filter-section,
-  .services-list-container {
-    flex: 0 0 100%; /* Элементы занимают всю ширину */
-    min-width: 100%;
+/* Анимация для оверлея */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
-  .filter-section {
-    margin-bottom: 20px; /* Отступ между секциями */
+
+.card-zoom {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  animation: zoomIn 0.3s ease forwards;
+  transform: scale(0.8);
+  position: relative;
+  font-family: 'Vollkorn', serif;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
   }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.dark-mode .card-zoom {
+  background: #2a2a2a;
+  color: #fff;
+  font-family: 'Vollkorn', serif;
 }

@@ -88,10 +88,14 @@ const App = () => {
     location: "",
   });
 
+  // Храним выбранную карточку
+  const [selectedService, setSelectedService] = useState(null);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
+  
   const filteredServices = services.filter((service) => {
     const duration = parseFloat(service.duration);
     const price = parseFloat(service.price.replace("$", ""));
@@ -112,9 +116,20 @@ const App = () => {
     ...new Set(services.map((service) => service.location)),
   ];
 
+  // Функция при клике на карточку
+  const handleCardClick = (service) => {
+    setSelectedService(service);
+  };
+
+  // Функция для закрытия оверлея (при клике вне карточки)
+  const closeOverlay = () => {
+    setSelectedService(null);
+  };
+
   return (
     <div className={darkMode ? "app-container dark-mode" : "app-container"}>
-      <Header toggleDarkMode={toggleDarkMode} />
+      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+
       <div className="main-content">
         <div className="filter-section">
           <FilterSection
@@ -123,10 +138,30 @@ const App = () => {
             locations={uniqueLocations}
           />
         </div>
+
         <div className="services-list-container">
-          <ServicesList services={filteredServices} />
+          <ServicesList services={filteredServices} onCardClick={handleCardClick} />
         </div>
       </div>
+
+      {/* Оверлей с увеличенной карточкой */}
+      {selectedService && (
+        <div className="overlay" onClick={closeOverlay}>
+          <div className="card-zoom" onClick={(e) => e.stopPropagation()}>
+            <h2>{selectedService.title}</h2>
+            <img
+              src={selectedService.image}
+              alt={selectedService.title}
+              style={{ width: "100%", borderRadius: "8px" }}
+            />
+            <p>{selectedService.description}</p>
+            <p><strong>Location:</strong> {selectedService.location}</p>
+            <p><strong>Duration:</strong> {selectedService.duration}</p>
+            <p><strong>Price:</strong> {selectedService.price}</p>
+            <p><strong>Rating:</strong> {selectedService.rating} ⭐</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,29 +1,36 @@
 .filter-section {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Отступы между группами фильтров */
+  gap: 20px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 120px;
+  font-family: 'Vollkorn', serif;
+  font-weight: 400;
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: transparent; 
 }
 
-.range-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.range-track {
+  height: 6px;
+  border-radius: 3px;
+  margin: 8px 0;
 }
 
-.range-group input {
-  flex: 1;
+.range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
 }
-
+  
 select {
   padding: 8px;
   font-size: 14px;
@@ -31,4 +38,42 @@ select {
   border-radius: 8px;
   background-color: #fff;
   color: #333;
+}
+
+
+.dark-mode .filter-section {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+
+.dark-mode .filter-group {
+  background-color: transparent;
+}
+
+.dark-mode .filter-group label {
+  color: #ffffff;
+}
+
+.dark-mode .filter-group input,
+.dark-mode .filter-group select {
+  background-color: #333;
+  color: #ffffff;
+  border-color: #444;
+}
+
+.dark-mode .filter-group input:focus,
+.dark-mode .filter-group select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px #4caf50;
+}
+
+
+.dark-mode .range-track {
+  background-color: transparent; 
+}
+
+.dark-mode .range-thumb {
+  background-color: #4caf50;
 }

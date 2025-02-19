@@ -1,4 +1,5 @@
 import React from "react";
+import { Range, getTrackBackground } from "react-range";
 import "./FilterSection.css";
 
 const FilterSection = ({ filters, setFilters, locations }) => {
@@ -11,85 +12,150 @@ const FilterSection = ({ filters, setFilters, locations }) => {
 
   return (
     <>
-      <h3>Filters</h3>
+      <h3>Filters:</h3>
+      
+      {/* Duration Filter */}
       <div className="filter-group">
         <label>
           Duration (hours): {filters.duration[0]} - {filters.duration[1]}
         </label>
-        <div className="range-group">
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value={filters.duration[0]}
-            onChange={(e) =>
-              handleChange("duration", [e.target.value, filters.duration[1]])
-            }
-          />
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value={filters.duration[1]}
-            onChange={(e) =>
-              handleChange("duration", [filters.duration[0], e.target.value])
-            }
-          />
-        </div>
+        <Range
+          step={0.5}
+          min={1}
+          max={5}
+          values={filters.duration}
+          onChange={(values) => handleChange("duration", values)}
+          renderTrack={({ props, children }) => (
+            <div
+              {...props}
+              className="range-track"
+              style={{
+                ...props.style,
+                height: "6px",
+                borderRadius: "3px",
+                background: getTrackBackground({
+                  values: filters.duration,
+                  colors: ["#ddd", "#4caf50", "#ddd"],
+                  min: 1,
+                  max: 5,
+                }),
+              }}
+            >
+              {children}
+            </div>
+          )}
+          renderThumb={({ props, index }) => (
+            <div
+              {...props}
+              className="range-thumb"
+              key={`duration-thumb-${index}`}
+              style={{
+                ...props.style,
+                height: "16px",
+                width: "16px",
+                borderRadius: "50%",
+                backgroundColor: "#4caf50",
+              }}
+            />
+          )}
+        />
       </div>
 
+      {/* Price Filter */}
       <div className="filter-group">
         <label>
           Price ($): {filters.price[0]} - {filters.price[1]}
         </label>
-        <div className="range-group">
-          <input
-            type="range"
-            min="20"
-            max="100"
-            value={filters.price[0]}
-            onChange={(e) =>
-              handleChange("price", [e.target.value, filters.price[1]])
-            }
-          />
-          <input
-            type="range"
-            min="20"
-            max="100"
-            value={filters.price[1]}
-            onChange={(e) =>
-              handleChange("price", [filters.price[0], e.target.value])
-            }
-          />
-        </div>
+        <Range
+          step={1}
+          min={20}
+          max={100}
+          values={filters.price}
+          onChange={(values) => handleChange("price", values)}
+          renderTrack={({ props, children }) => (
+            <div
+              {...props}
+              className="range-track"
+              style={{
+                ...props.style,
+                height: "6px",
+                borderRadius: "3px",
+                background: getTrackBackground({
+                  values: filters.price,
+                  colors: ["#ddd", "#4caf50", "#ddd"],
+                  min: 20,
+                  max: 100,
+                }),
+              }}
+            >
+              {children}
+            </div>
+          )}
+          renderThumb={({ props, index }) => (
+            <div
+              {...props}
+              className="range-thumb"
+              key={`price-thumb-${index}`}
+              style={{
+                ...props.style,
+                height: "16px",
+                width: "16px",
+                borderRadius: "50%",
+                backgroundColor: "#4caf50",
+              }}
+            />
+          )}
+        />
       </div>
 
+      {/* Rating Filter */}
       <div className="filter-group">
         <label>
           Rating: {filters.rating[0]} - {filters.rating[1]}
         </label>
-        <div className="range-group">
-          <input
-            type="range"
-            min="0"
-            max="5"
-            value={filters.rating[0]}
-            onChange={(e) =>
-              handleChange("rating", [e.target.value, filters.rating[1]])
-            }
-          />
-          <input
-            type="range"
-            min="0"
-            max="5"
-            value={filters.rating[1]}
-            onChange={(e) =>
-              handleChange("rating", [filters.rating[0], e.target.value])
-            }
-          />
-        </div>
+        <Range
+          step={0.1}
+          min={0}
+          max={5}
+          values={filters.rating}
+          onChange={(values) => handleChange("rating", values)}
+          renderTrack={({ props, children }) => (
+            <div
+              {...props}
+              className="range-track"
+              style={{
+                ...props.style,
+                height: "6px",
+                borderRadius: "3px",
+                background: getTrackBackground({
+                  values: filters.rating,
+                  colors: ["#ddd", "#4caf50", "#ddd"],
+                  min: 0,
+                  max: 5,
+                }),
+              }}
+            >
+              {children}
+            </div>
+          )}
+          renderThumb={({ props, index }) => (
+            <div
+              {...props}
+              className="range-thumb"
+              key={`rating-thumb-${index}`}
+              style={{
+                ...props.style,
+                height: "16px",
+                width: "16px",
+                borderRadius: "50%",
+                backgroundColor: "#4caf50",
+              }}
+            />
+          )}
+        />
       </div>
 
+      {/* Location Filter */}
       <div className="filter-group">
         <label>Location:</label>
         <select

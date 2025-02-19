@@ -1,9 +1,13 @@
 import React from "react";
 import "./ServiceCard.css";
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, onCardClick }) => {
+  const handleClick = () => {
+    onCardClick(service);
+  };
+
   return (
-    <div className="service-card">
+    <div className="service-card" onClick={handleClick}>
       <img src={service.image} alt={service.title} className="service-image" />
       <h3>{service.title}</h3>
       <p>{service.description}</p>
