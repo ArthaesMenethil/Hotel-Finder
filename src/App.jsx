@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/templates/Header";
 import FilterSection from "./components/organisms/FilterSection";
 import ServicesList from "./components/templates/ServicesList";
+import ServiceDetails from "./components/templates/ServiceDetails";
 import "./App.css";
 
 const services = [
@@ -88,14 +89,21 @@ const App = () => {
     location: "",
   });
 
-  // Храним выбранную карточку
+  // Карточка, которая открывается в оверлее
   const [selectedService, setSelectedService] = useState(null);
+  // Карточка, для которой открыта детальная страница
+  const [detailedService, setDetailedService] = useState(null);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
-  
+  // Клик по логотипу в header
+  const handleLogoClick = () => {
+    setSelectedService(null);
+    setDetailedService(null);
+  };
+
   const filteredServices = services.filter((service) => {
     const duration = parseFloat(service.duration);
     const price = parseFloat(service.price.replace("$", ""));
@@ -116,19 +124,48 @@ const App = () => {
     ...new Set(services.map((service) => service.location)),
   ];
 
-  // Функция при клике на карточку
+  // Открытие оверлея при клике на карточку
   const handleCardClick = (service) => {
     setSelectedService(service);
   };
 
-  // Функция для закрытия оверлея (при клике вне карточки)
+  // Закрытие оверлея при клике вне карточки
   const closeOverlay = () => {
     setSelectedService(null);
   };
 
+  // Переход к детальной странице
+  const handleMore = () => {
+    setDetailedService(selectedService);
+    setSelectedService(null);
+  };
+
+  // Возврат с детальной страницы
+  const handleBack = () => {
+    setDetailedService(null);
+  };
+
+  // Отображение детальной страницы
+  if (detailedService) {
+    return (
+      <div className={darkMode ? "app-container dark-mode" : "app-container"}>
+        <Header
+          toggleDarkMode={toggleDarkMode}
+          darkMode={darkMode}
+          onLogoClick={handleLogoClick}
+        />
+        <ServiceDetails service={detailedService} onBack={handleBack} />
+      </div>
+    );
+  }
+
   return (
     <div className={darkMode ? "app-container dark-mode" : "app-container"}>
-      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+      <Header
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
+        onLogoClick={handleLogoClick}
+      />
 
       <div className="main-content">
         <div className="filter-section">
@@ -159,6 +196,9 @@ const App = () => {
             <p><strong>Duration:</strong> {selectedService.duration}</p>
             <p><strong>Price:</strong> {selectedService.price}</p>
             <p><strong>Rating:</strong> {selectedService.rating} ⭐</p>
+            <button className="more-btn" onClick={handleMore}>
+              More
+            </button>
           </div>
         </div>
       )}

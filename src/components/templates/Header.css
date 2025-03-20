@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #2d572c;
+  background-color: #f2e0c9; /* Кремовый фон */
   color: #fff;
   width: 100%;
   margin: 0;
@@ -18,6 +18,8 @@
   margin-left: 80px;
   font-family: 'Vollkorn', serif;
   font-weight: 700;
+  cursor: pointer;
+  color: #c94c4c; /* Мягкий красный */
 }
 
 .dark-mode .header {

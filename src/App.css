@@ -70,7 +70,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Затемнение */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +78,6 @@
   animation: fadeIn 0.3s ease forwards;
 }
 
-/* Анимация для оверлея */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -88,11 +87,11 @@
   }
 }
 
-
 .card-zoom {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
+  margin-top: 80px;
   max-width: 600px;
   width: 90%;
   max-height: 80%;
@@ -112,9 +111,41 @@
   }
 }
 
-
 .dark-mode .card-zoom {
   background: #2a2a2a;
   color: #fff;
   font-family: 'Vollkorn', serif;
+}
+
+/* Стиль кнопки More */
+.more-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #a8d5ba;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.more-btn:hover {
+  background-color: #8ec3a4;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .filter-section,
+  .services-list-container {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
 }

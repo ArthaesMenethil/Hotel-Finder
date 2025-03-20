@@ -19,6 +19,8 @@
 .service-card h3 {
   font-size: 20px;
   margin-bottom: 8px;
+  width: 100%;
+  text-align: center;
 }
 
 .service-image {
@@ -26,6 +28,11 @@
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.service-details {
+  width: 100%;
+  text-align: left;
 }
 
 .service-details p {
