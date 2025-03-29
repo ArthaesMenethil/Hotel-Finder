@@ -17,10 +17,10 @@ const FilterSection = ({ filters, setFilters, locations }) => {
       {/* Duration Filter */}
       <div className="filter-group">
         <label>
-          Duration (hours): {filters.duration[0]} - {filters.duration[1]}
+          Duration (days): {filters.duration[0]} - {filters.duration[1]}
         </label>
         <Range
-          step={0.5}
+          step={1}
           min={1}
           max={5}
           values={filters.duration}

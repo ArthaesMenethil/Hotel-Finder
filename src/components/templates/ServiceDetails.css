@@ -1,66 +1,102 @@
 .service-details-page {
-    padding: 20px;
-    font-family: 'Vollkorn', serif;
-    background-color: #f9f9f9;
-    min-height: 100vh;
+  padding: 20px;
+  font-family: 'Vollkorn', serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.dark-mode .service-details-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  background-color: #f2e0c9;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.dark-mode .details-header {
+  background-color: #1e1e1e;
+}
+
+.details-header h1 {
+  color: #c94c4c;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background-color: #a8d5ba;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #8ec3a4;
+}
+
+.images-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.main-image {
+  width: 60%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.small-images {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+}
+
+.small-image {
+  width: 100%;
+  height: calc(350px / 3 - 10px);
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .images-container {
+      flex-direction: column;
   }
-  
-  .dark-mode .service-details-page {
-    background-color: #121212;
-    color: #ffffff;
+
+  .main-image {
+      width: 100%;
+      height: 300px;
   }
-  
-  .details-header {
-    display: flex;
-    align-items: center;
-    background-color: #f2e0c9;
-    padding: 10px 20px;
-    margin-bottom: 20px;
+
+  .small-images {
+      width: 100%;
+      flex-direction: row;
+      gap: 5px;
   }
-  
-  .dark-mode .details-header {
-    background-color: #1e1e1e;
+
+  .small-image {
+      height: 100px;
+      flex: 1;
   }
-  
-  .details-header h1 {
-    color: #c94c4c;
-    margin: 0 auto;
-  }
-  
-  .back-btn {
-    background-color: #a8d5ba;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-btn:hover {
-    background-color: #8ec3a4;
-  }
-  
-  .details-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .details-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .details-text {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .dark-mode .details-text {
-    color: #ccc;
-  }
-  
+}
+
+.details-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.dark-mode .details-text {
+  color: #ccc;
+}
