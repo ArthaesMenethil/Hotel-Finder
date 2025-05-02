@@ -8,3 +8,19 @@
   gap: 16px;
   justify-content: center;
 }
+
+@media (max-width: 480px) {
+  .services-list {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    margin: 0 auto 20px auto;
+    max-width: 360px;
+    width: 100%;
+  }
+}
