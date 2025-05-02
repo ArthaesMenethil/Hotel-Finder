@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-grid-system";
 import Header from "./components/templates/Header";
 import FilterSection from "./components/organisms/FilterSection";
 import ServicesList from "./components/templates/ServicesList";
@@ -170,6 +171,14 @@ const App = () => {
   const handleBack = () => {
     setDetailedService(null);
   };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
 
   if (detailedService) {
     return (

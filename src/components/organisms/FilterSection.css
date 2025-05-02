@@ -77,3 +77,27 @@ select {
 .dark-mode .range-thumb {
   background-color: #4caf50;
 }
+
+@media (max-width: 768px) {
+  .filters-container {
+    width: 100%;
+    margin: 0 auto 20px auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .filter-section {
+    max-height: 400px;
+    position: static;
+    top: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .filters-container .filter-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -5,10 +5,15 @@ import "./Header.css";
 const Header = ({ toggleDarkMode, darkMode, onLogoClick, searchQuery, setSearchQuery }) => {
   return (
     <header className="header">
-      <h1 className="logo" onClick={onLogoClick}>
-        Hotel Finder
-      </h1>
-      
+      <div className="logo-wrapper" onClick={onLogoClick}>
+        <img
+          src="https://sun9-59.userapi.com/impg/vPCK9Yv8wWwcWuy2ztzXFv5diZNl4LPvVi7E7w/euf6ePLiYqY.jpg?size=2048x2048&quality=95&sign=5f2d4ade9003a091069eea6c5551d5dd&type=album"
+          alt="Logo"
+          className="logo-image"
+        />
+        <h1 className="logo">Hotel Finder</h1>
+      </div>
+
       <div className="search-bar">
         <FaSearch className="search-icon" />
         <input
