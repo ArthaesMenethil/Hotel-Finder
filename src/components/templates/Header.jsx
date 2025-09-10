@@ -1,8 +1,16 @@
 import React from "react";
-import { FaSun, FaMoon, FaSearch } from "react-icons/fa";
+import { FaSun, FaMoon, FaSearch, FaShoppingCart } from "react-icons/fa";
 import "./Header.css";
 
-const Header = ({ toggleDarkMode, darkMode, onLogoClick, searchQuery, setSearchQuery }) => {
+const Header = ({
+  toggleDarkMode,
+  darkMode,
+  onLogoClick,
+  searchQuery,
+  setSearchQuery,
+  onLoginClick,
+  onCartClick,
+}) => {
   return (
     <header className="header">
       <div className="logo-wrapper" onClick={onLogoClick}>
@@ -24,9 +32,17 @@ const Header = ({ toggleDarkMode, darkMode, onLogoClick, searchQuery, setSearchQ
         />
       </div>
 
-      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {darkMode ? <FaSun className="icon sun" /> : <FaMoon className="icon moon" />}
-      </button>
+      <div className="header-actions">
+        <button className="auth-button" onClick={onLoginClick}>
+          Login
+        </button>
+        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+          {darkMode ? <FaSun className="icon sun" /> : <FaMoon className="icon moon" />}
+        </button>
+        <button className="cart-button" onClick={onCartClick}>
+          <FaShoppingCart />
+        </button>
+      </div>
     </header>
   );
 };

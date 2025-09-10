@@ -50,7 +50,7 @@
   width: 35px;
   height: 35px;
   color: black !important;
-  background-color: rgba(0, 0, 0, 0.5) !important; /* Полупрозрачный фон */
+  background-color: rgba(0, 0, 0, 0.5) !important;
   border-radius: 50%;
   display: flex !important;
   align-items: center;

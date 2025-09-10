@@ -10,6 +10,8 @@
   top: 120px;
   font-family: 'Vollkorn', serif;
   font-weight: 400;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .filter-group {
@@ -22,7 +24,10 @@
 .range-track {
   height: 6px;
   border-radius: 3px;
-  margin: 8px 0;
+  margin: 8px auto;
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .range-thumb {
@@ -40,13 +45,11 @@ select {
   color: #333;
 }
 
-
 .dark-mode .filter-section {
   background-color: #1e1e1e;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
-
 
 .dark-mode .filter-group {
   background-color: transparent;
@@ -68,7 +71,6 @@ select {
   border-color: #4caf50;
   box-shadow: 0 0 4px #4caf50;
 }
-
 
 .dark-mode .range-track {
   background-color: transparent; 

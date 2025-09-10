@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-grid-system";
 import Header from "./components/templates/Header";
 import FilterSection from "./components/organisms/FilterSection";
 import ServicesList from "./components/templates/ServicesList";
 import ServiceDetails from "./components/templates/ServiceDetails";
 import Footer from "./components/templates/Footer";
 import Slider from "react-slick";
+import Cart from "./components/templates/Cart";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./App.css";
@@ -122,13 +122,33 @@ const App = () => {
   const [detailedService, setDetailedService] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState("login");
 
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const toggleDarkMode = () => setDarkMode(!darkMode);
   const handleLogoClick = () => {
     setSelectedService(null);
     setDetailedService(null);
+  };
+
+  const handleLoginClick = () => setShowAuthModal(true);
+  const closeAuthModal = () => setShowAuthModal(false);
+
+  const handleCartClick = () => setShowCart(true);
+  const closeCart = () => setShowCart(false);
+
+  const handleAddToCart = (service) => {
+    setCartItems([...cartItems, service]);
+    alert(`${service.title} added to cart`);
+  };
+
+  const handlePay = () => {
+    alert("Payment successful!");
+    setCartItems([]);
+    setShowCart(false);
   };
 
   const filteredServices = services.filter((service) => {
@@ -151,58 +171,99 @@ const App = () => {
     );
   });
 
-  const uniqueLocations = [
-    ...new Set(services.map((service) => service.location)),
-  ];
+  const uniqueLocations = [...new Set(services.map((s) => s.location))];
 
-  const handleCardClick = (service) => {
-    setSelectedService(service);
-  };
-
-  const closeOverlay = () => {
-    setSelectedService(null);
-  };
-
+  const handleCardClick = (service) => setSelectedService(service);
+  const closeOverlay = () => setSelectedService(null);
   const handleMore = () => {
     setDetailedService(selectedService);
     setSelectedService(null);
   };
-
-  const handleBack = () => {
-    setDetailedService(null);
-  };
+  const handleBack = () => setDetailedService(null);
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
+    if (darkMode) document.body.classList.add("dark-mode");
+    else document.body.classList.remove("dark-mode");
   }, [darkMode]);
 
   if (detailedService) {
     return (
       <div className={darkMode ? "app-container dark-mode" : "app-container"}>
+        {}
         <Header
           toggleDarkMode={toggleDarkMode}
           darkMode={darkMode}
           onLogoClick={handleLogoClick}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          onLoginClick={handleLoginClick}
+          onCartClick={handleCartClick}
         />
-        <ServiceDetails 
-        service={detailedService} 
-        onBack={handleBack} 
-        toggleDarkMode={toggleDarkMode}
-        darkMode={darkMode}
-        onLogoClick={handleLogoClick}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
+
+        {}
+        <ServiceDetails
+          service={detailedService}
+          onBack={handleBack}
+          toggleDarkMode={toggleDarkMode}
+          darkMode={darkMode}
+          onAddToCart={handleAddToCart}
         />
+
+        {showCart && (
+          <Cart cartItems={cartItems} onClose={closeCart} onPay={handlePay} />
+        )}
+
         <Footer />
+
+        {showAuthModal && (
+          <div className="overlay" onClick={closeAuthModal}>
+            <div
+              className="card-zoom"
+              onClick={(e) => e.stopPropagation()}
+              style={{ maxWidth: 400 }}
+            >
+              <h2 style={{ textAlign: "center" }}>
+                {authMode === "login" ? "Login" : "Register"}
+              </h2>
+              <input type="text" placeholder="Username" className="auth-input" />
+              <input
+                type="password"
+                placeholder="Password"
+                className="auth-input"
+              />
+              {authMode === "register" && (
+                <input type="email" placeholder="Email" className="auth-input" />
+              )}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: 10,
+                  marginTop: 20,
+                }}
+              >
+                <button
+                  className="more-btn"
+                  onClick={() => alert(`${authMode} submitted`)}
+                >
+                  {authMode === "login" ? "Login" : "Register"}
+                </button>
+                <button
+                  className="more-btn"
+                  onClick={() =>
+                    setAuthMode(authMode === "login" ? "register" : "login")
+                  }
+                >
+                  {authMode === "login" ? "Switch to Register" : "Switch to Login"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
+
 
   return (
     <div className={darkMode ? "app-container dark-mode" : "app-container"}>
@@ -212,6 +273,8 @@ const App = () => {
         onLogoClick={handleLogoClick}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        onLoginClick={handleLoginClick}
+        onCartClick={handleCartClick}
       />
 
       <div className="main-content">
@@ -224,7 +287,10 @@ const App = () => {
         </div>
 
         <div className="services-list-container">
-          <ServicesList services={filteredServices} onCardClick={handleCardClick} />
+          <ServicesList
+            services={filteredServices}
+            onCardClick={handleCardClick}
+          />
         </div>
       </div>
 
@@ -233,34 +299,99 @@ const App = () => {
           <div className="card-zoom" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedService.title}</h2>
             <Slider
-              dots={true}
-              infinite={true}
+              dots
+              infinite
               speed={500}
               slidesToShow={1}
               slidesToScroll={1}
-              arrows={true}
+              arrows
             >
-              {selectedService.images.map((image, index) => (
-                <div key={index}>
+              {selectedService.images.map((image, i) => (
+                <div key={i}>
                   <img
                     src={image}
-                    alt={`${selectedService.title} ${index + 1}`}
+                    alt={`${selectedService.title} ${i + 1}`}
                     className="service-image"
                   />
                 </div>
               ))}
             </Slider>
             <p>{selectedService.description}</p>
-            <p><strong>Location:</strong> {selectedService.location}</p>
-            <p><strong>Duration:</strong> {selectedService.duration}</p>
-            <p><strong>Price:</strong> {selectedService.price}</p>
-            <p><strong>Rating:</strong> {selectedService.rating} ⭐</p>
+            <p>
+              <strong>Location:</strong> {selectedService.location}
+            </p>
+            <p>
+              <strong>Duration:</strong> {selectedService.duration}
+            </p>
+            <p>
+              <strong>Price:</strong> {selectedService.price}
+            </p>
+            <p>
+              <strong>Rating:</strong> {selectedService.rating} ⭐
+            </p>
             <button className="more-btn" onClick={handleMore}>
               More
+            </button>
+            <button
+              className="more-btn"
+              onClick={() => handleAddToCart(selectedService)}
+            >
+              Add
             </button>
           </div>
         </div>
       )}
+
+      {showAuthModal && (
+        <div className="overlay" onClick={closeAuthModal}>
+          <div
+            className="card-zoom"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: 400 }}
+          >
+            <h2 style={{ textAlign: "center" }}>
+              {authMode === "login" ? "Login" : "Register"}
+            </h2>
+            <input type="text" placeholder="Username" className="auth-input" />
+            <input
+              type="password"
+              placeholder="Password"
+              className="auth-input"
+            />
+            {authMode === "register" && (
+              <input type="email" placeholder="Email" className="auth-input" />
+            )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 10,
+                marginTop: 20,
+              }}
+            >
+              <button
+                className="more-btn"
+                onClick={() => alert(`${authMode} submitted`)}
+              >
+                {authMode === "login" ? "Login" : "Register"}
+              </button>
+              <button
+                className="more-btn"
+                onClick={() =>
+                  setAuthMode(authMode === "login" ? "register" : "login")
+                }
+              >
+                {authMode === "login" ? "Switch to Register" : "Switch to Login"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCart && (
+        <Cart cartItems={cartItems} onClose={closeCart} onPay={handlePay} />
+      )}
+
       <Footer />
     </div>
   );

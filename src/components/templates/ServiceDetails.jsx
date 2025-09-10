@@ -5,16 +5,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ServiceDetails.css";
 
-const ServiceDetails = ({ service, onBack, toggleDarkMode, darkMode, onLogoClick, searchQuery, setSearchQuery  }) => {
+const ServiceDetails = ({
+  service,
+  onBack,
+  toggleDarkMode,
+  darkMode,
+  onLogoClick,
+  searchQuery,
+  setSearchQuery,
+  onAddToCart,
+}) => {
   return (
     <div className="service-details-page">
-      <Header
-        toggleDarkMode={toggleDarkMode}
-        darkMode={darkMode}
-        onLogoClick={onLogoClick}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+      
 
       <div className="details-header">
         <button className="back-btn" onClick={onBack}>
@@ -38,7 +41,11 @@ const ServiceDetails = ({ service, onBack, toggleDarkMode, darkMode, onLogoClick
         <p><strong>Duration:</strong> {service.duration}</p>
         <p><strong>Price:</strong> {service.price}</p>
         <p><strong>Rating:</strong> {service.rating} ⭐</p>
+        <button className="more-btn" onClick={() => onAddToCart(service)}>
+          Add
+        </button>
       </div>
+
     </div>
   );
 };
