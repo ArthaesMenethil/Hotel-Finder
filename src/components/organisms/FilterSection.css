@@ -1,0 +1,105 @@
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 120px;
+  font-family: 'Vollkorn', serif;
+  font-weight: 400;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: transparent; 
+}
+
+.range-track {
+  height: 6px;
+  border-radius: 3px;
+  margin: 8px auto;
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+  
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
+.dark-mode .filter-section {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .filter-group {
+  background-color: transparent;
+}
+
+.dark-mode .filter-group label {
+  color: #ffffff;
+}
+
+.dark-mode .filter-group input,
+.dark-mode .filter-group select {
+  background-color: #333;
+  color: #ffffff;
+  border-color: #444;
+}
+
+.dark-mode .filter-group input:focus,
+.dark-mode .filter-group select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px #4caf50;
+}
+
+.dark-mode .range-track {
+  background-color: transparent; 
+}
+
+.dark-mode .range-thumb {
+  background-color: #4caf50;
+}
+
+@media (max-width: 768px) {
+  .filters-container {
+    width: 100%;
+    margin: 0 auto 20px auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .filter-section {
+    max-height: 400px;
+    position: static;
+    top: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .filters-container .filter-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
