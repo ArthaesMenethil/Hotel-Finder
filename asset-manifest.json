@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Hotel-Finder/static/css/main.eec9080c.css",
+    "main.js": "/Hotel-Finder/static/js/main.505dcd90.js",
+    "static/media/slick.svg": "/Hotel-Finder/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Hotel-Finder/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Hotel-Finder/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Hotel-Finder/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Hotel-Finder/index.html",
+    "main.eec9080c.css.map": "/Hotel-Finder/static/css/main.eec9080c.css.map",
+    "main.505dcd90.js.map": "/Hotel-Finder/static/js/main.505dcd90.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eec9080c.css",
+    "static/js/main.505dcd90.js"
+  ]
+}
