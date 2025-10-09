@@ -12,7 +12,7 @@ const Register = ({ onRegisterSuccess, onFormSwitch }) => {
     setSuccess('');
 
     try {
-      const response = await fetch('http://localhost:5001/api/register', {
+      const response = await fetch('https://hotel-finder-backend.onrender.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
