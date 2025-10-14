@@ -24,8 +24,6 @@ yarn-error.log*
 
 package-lock.json
 
-package.json
-
 setupTests.js
 
 node_modules
