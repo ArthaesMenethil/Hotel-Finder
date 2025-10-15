@@ -1,28 +1,14 @@
-/* style.css */
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  /* Удалено background-color: transparent;, т.к. App.css устанавливает фон-изображение */
 }
 
-/* Удалено: .app-container - уже есть в App.css */
-/* Удалено: .header - уже есть более полные стили в App.css */
-
 .content {
-  /* Класс .content в вашем коде App.jsx не используется, но на всякий случай оставляю его здесь,
-     хотя его дублирование в исходном коде style.css бессмысленно */
   display: flex;
   width: 100%;
   max-width: 1200px;
-  margin-top: 60px; /* Используется только в одном из дубликатов */
+  margin-top: 60px;
 }
-
-/* Удалено: .filter-section - конфликтует с App.css */
-/* Удалено: .services-list - конфликтует с App.css */
-/* Удалено: .service-card - конфликтует с App.css */
-/* Удалено: body.dark-mode - конфликтует с App.css */
-
 
 .auth-form-container {
   display: flex;

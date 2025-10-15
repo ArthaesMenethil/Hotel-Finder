@@ -6,18 +6,22 @@ html, body, #root {
 }
 
 body {
-  background-image: url('https://sun9-51.userapi.com/impg/YzGNxzncqbZdOD2Ylpf_-61BB2A04WPyWeVhdw/0A8v-QpDX8M.jpg?size=2560x1832&quality=95&sign=77de87fe24b5c65ba9d125929593e03c&type=album');
+  /* background-image: url('https://sun9-51.userapi.com/impg/YzGNxzncqbZdOD2Ylpf_-61BB2A04WPyWeVhdw/0A8v-QpDX8M.jpg?size=2560x1832&quality=95&sign=77de87fe24b5c65ba9d125929593e03c&type=album');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   color: #333;
+
+  background: linear-gradient(180deg, #d3c7b8 0%, #c5955e 100%);
 }
 
 body.dark-mode {
   background-image: none !important;
-  background-color: #121212 !important;
+  /* background-color: #121212 !important; */
   color: #ffffff !important;
+  
+  background: linear-gradient(180deg, #1f1f1f 0%, #141414 100%) !important;
 }
 
 
