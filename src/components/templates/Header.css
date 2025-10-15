@@ -9,13 +9,14 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #eed7c5;
+  background: linear-gradient(to bottom, #eed7c5 0%, #e7e0d8 100%);
   z-index: 1000;
 }
 
 .dark-mode .header {
   background-color: #2a2a2a;
   color: #fff;
+  background: linear-gradient(to bottom, #2a2a2a 0%, #444444 100%);
 }
 
 .logo-wrapper {
@@ -83,7 +84,8 @@
 
 .auth-button {
   padding: 6px 12px;
-  background-color: #a8d5ba;
+  background: linear-gradient(to right, #c94c4c, #a8d5ba);
+  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -94,16 +96,16 @@
 }
 
 .auth-button:hover {
-  background-color: #8ec3a4;
+  opacity: 0.9;
 }
 
 .dark-mode .auth-button {
-  background-color: #555;
+  background: linear-gradient(to right, #ff5a5f, #75b798);
   color: #fff;
 }
 
 .dark-mode .auth-button:hover {
-  background-color: #777;
+  opacity: 0.9;
 }
 
 .auth-button.user-initials {

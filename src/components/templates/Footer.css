@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px;
-  background: #dfe5dc !important;
+  background: linear-gradient(to top, #dfe5dc 0%, #e7e0d8 100%);
   border-top: 1px solid #ddd;
   margin-top: auto; 
   flex-shrink: 0;

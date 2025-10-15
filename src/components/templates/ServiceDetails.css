@@ -4,8 +4,7 @@
   padding-right: 20px;
   padding-top: 70px;
   font-family: 'Vollkorn', serif;
-  background-color: #f9f9f9;
-  min-height: 100vh;
+  background-color: transparent;
   position: relative;
   z-index: 1;
 }
@@ -18,13 +17,14 @@
 .details-header {
   display: flex;
   align-items: center;
-  background-color: #f2e0c9;
+  background: linear-gradient(to top, #dfe5dc 0%, #e7e0d8 100%);
   padding: 10px 20px;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .dark-mode .details-header {
-  background-color: #1e1e1e;
+  background-color: #2a2a2a;
 }
 
 .details-header h1 {
@@ -73,6 +73,23 @@
   border-radius: 8px;
 }
 
+
+.details-info-card {
+  background-color: #f0edeb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.dark-mode .details-info-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .images-container {
@@ -110,4 +127,3 @@ header {
   position: relative;
   z-index: 1000;
 }
-

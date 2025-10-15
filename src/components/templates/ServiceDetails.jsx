@@ -35,15 +35,17 @@ const ServiceDetails = ({
         </div>
       </div>
 
-      <div className="details-text">
-        <p>{service.description}</p>
-        <p><strong>Location:</strong> {service.location}</p>
-        <p><strong>Duration:</strong> {service.duration}</p>
-        <p><strong>Price:</strong> {service.price}</p>
-        <p><strong>Rating:</strong> {service.rating} ⭐</p>
-        <button className="more-btn" onClick={() => onAddToCart(service)}>
-          Add
-        </button>
+      <div className="details-info-card">
+        <div className="details-text">
+          <p>{service.description}</p>
+          <p><strong>Location:</strong> {service.location}</p>
+          <p><strong>Duration:</strong> {service.duration}</p>
+          <p><strong>Price:</strong> {service.price}</p>
+          <p><strong>Rating:</strong> {service.rating} ⭐</p>
+          <button className="more-btn" onClick={() => onAddToCart(service)}>
+            Add
+          </button>
+        </div>
       </div>
 
     </div>

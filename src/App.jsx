@@ -248,7 +248,7 @@ const App = () => {
           <Cart cartItems={cartItems} onClose={closeCart} onPay={handlePay} />
         )}
 
-        <Footer />
+        
 
         {showAuthModal && (
   <div className="overlay" onClick={closeAuthModal}>
@@ -282,6 +282,8 @@ const App = () => {
     </div>
   </div>
 )}
+
+      <Footer />
       </div>
     );
   }

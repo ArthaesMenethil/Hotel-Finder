@@ -1,71 +1,28 @@
+/* style.css */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: transparent;
+  /* Удалено background-color: transparent;, т.к. App.css устанавливает фон-изображение */
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-}
-
-.header {
-  width: 100%;
-  background-color: #f2e0c9;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+/* Удалено: .app-container - уже есть в App.css */
+/* Удалено: .header - уже есть более полные стили в App.css */
 
 .content {
+  /* Класс .content в вашем коде App.jsx не используется, но на всякий случай оставляю его здесь,
+     хотя его дублирование в исходном коде style.css бессмысленно */
   display: flex;
   width: 100%;
   max-width: 1200px;
-  margin-top: 60px;
+  margin-top: 60px; /* Используется только в одном из дубликатов */
 }
 
-.content {
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 20px;
-}
+/* Удалено: .filter-section - конфликтует с App.css */
+/* Удалено: .services-list - конфликтует с App.css */
+/* Удалено: .service-card - конфликтует с App.css */
+/* Удалено: body.dark-mode - конфликтует с App.css */
 
-.filter-section {
-  width: 25%;
-  background-color: #ffffff;
-  padding: 20px;
-  margin-right: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.services-list {
-  width: 75%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.service-card {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
-}
-
-body.dark-mode {
-  background-color: #121212 !important;
-  background-image: none !important;
-  color: #ffffff;
-}
 
 .auth-form-container {
   display: flex;

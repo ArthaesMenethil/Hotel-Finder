@@ -41,14 +41,13 @@ body.dark-mode {
 }
 
 body.dark-mode .footer {
-  background-color: #2a2a2a;
   color: #fff;
 }
 
 .filter-section {
   flex: 0 0 300px;
   min-width: 250px;
-  background: #fff;
+  background: #f0edeb;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -93,6 +92,11 @@ body.dark-mode .filter-section label {
   color: #ffffff;
 }
 
+.service-card {
+  background-color: #d7d1c6;
+  color: #333;
+}
+
 body.dark-mode .service-card {
   background-color: #2a2a2a;
   color: #ffffff;
@@ -133,7 +137,7 @@ body.dark-mode .auth-input {
 
 @keyframes fadeIn {
   from { opacity: 0; }
-  to   { opacity: 1; }
+  to  { opacity: 1; }
 }
 
 .card-zoom {
@@ -154,7 +158,7 @@ body.dark-mode .auth-input {
 
 @keyframes zoomIn {
   from { transform: scale(0.8); }
-  to   { transform: scale(1); }
+  to  { transform: scale(1); }
 }
 
 body.dark-mode .card-zoom {
@@ -190,6 +194,10 @@ body.dark-mode .card-zoom {
   justify-content: center;
   width: 100%;
   padding-top: 100px;
+}
+
+.service-details-page {
+  flex-grow: 1;
 }
 
 .service-details-container {
