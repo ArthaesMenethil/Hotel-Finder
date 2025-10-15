@@ -10,7 +10,18 @@ const Header = ({
   setSearchQuery,
   onLoginClick,
   onCartClick,
+  currentUser,
+  onLogout,
 }) => {
+  const authButtonText = currentUser
+    ? currentUser.username.charAt(0).toUpperCase()
+    : "Login";
+    
+  const handleAuthClick = currentUser ? onLogout : onLoginClick;
+
+  const isSmallScreen = window.innerWidth <= 768;
+  const placeholderText = isSmallScreen ? "Search:" : "Search services:";
+
   return (
     <header className="header">
       <div className="logo-wrapper" onClick={onLogoClick}>
@@ -33,9 +44,14 @@ const Header = ({
       </div>
 
       <div className="header-actions">
-        <button className="auth-button" onClick={onLoginClick}>
-          Login
+        <button 
+          className={currentUser ? "auth-button user-initials" : "auth-button"} 
+          onClick={handleAuthClick}
+          title={currentUser ? `Logout (${currentUser.username})` : "Login"}
+        >
+          {authButtonText}
         </button>
+        
         <button className="dark-mode-toggle" onClick={toggleDarkMode}>
           {darkMode ? <FaSun className="icon sun" /> : <FaMoon className="icon moon" />}
         </button>

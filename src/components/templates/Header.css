@@ -45,6 +45,9 @@
   border-radius: 6px;
   padding: 5px 10px;
   flex: 1 1 auto;
+  Flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
   max-width: 300px;
   margin: 0 20px;
   box-sizing: border-box;
@@ -57,6 +60,10 @@
   flex: 1;
   font-size: 14px;
   background: transparent;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dark-mode .search-bar {
@@ -81,6 +88,9 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  min-width: 40px;
 }
 
 .auth-button:hover {
@@ -94,6 +104,32 @@
 
 .dark-mode .auth-button:hover {
   background-color: #777;
+}
+
+.auth-button.user-initials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #c94c4c;
+  color: #fff;
+  line-height: 1;
+}
+
+.auth-button.user-initials:hover {
+  background-color: #a83b3b;
+}
+
+.dark-mode .auth-button.user-initials {
+  background-color: #ff5a5f;
+}
+
+.dark-mode .auth-button.user-initials:hover {
+  background-color: #e04a4f;
 }
 
 .dark-mode-toggle {
@@ -119,7 +155,28 @@
 
 @media (max-width: 768px) {
   .search-bar {
-    max-width: calc(100vw - 180px) !important;
+    max-width: 140px;
     margin: 0 10px;
+  }
+
+  .search-bar input {
+      font-size: 12px;
+      margin-left: 5px;
+  }
+
+  .logo-wrapper {
+      gap: 5px;
+  }
+
+  .logo {
+      font-size: 18px;
+  }
+
+  .header {
+      padding: 10px 10px;
+  }
+
+  .header-actions {
+      gap: 5px;
   }
 }
