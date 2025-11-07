@@ -13,6 +13,7 @@ import "./App.css";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import authService from "./services/authService";
+import apiClient from "./services/apiClient";
 
 const services = [
   {
@@ -142,6 +143,65 @@ const App = () => {
     }
   }, []);
 
+    // 1. Функция загрузки и фильтрации данных
+    const fetchServices = useCallback(async (currentFilters) => {
+        setLoading(true);
+        try {
+            // Преобразование фильтров в формат, понятный бэкенду
+            const apiFilters = {
+                durationMin: currentFilters.duration[0],
+                durationMax: currentFilters.duration[1],
+                priceMin: parseFloat(currentFilters.price[0]),
+                priceMax: parseFloat(currentFilters.price[1]),
+                ratingMin: currentFilters.rating[0],
+                ratingMax: currentFilters.rating[1],
+                location: currentFilters.location,
+                searchQuery: currentFilters.searchQuery,
+            };
+            
+            const data = await apiClient.getHotels(apiFilters);
+            setApiServices(data); // Сохранение результата с бэкенда
+        } catch (error) {
+            console.error("Failed to fetch services:", error);
+            setMessage("Error fetching data from server.");
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    // 2. Запуск загрузки при изменении фильтров
+    useEffect(() => {
+        // Объединение текущих фильтров и поискового запроса
+        const combinedFilters = { ...filters, searchQuery };
+        fetchServices(combinedFilters);
+    }, [filters, searchQuery, fetchServices]);
+
+    // 3. Логика фильтрации
+    // filteredServices объединяет локальные данные с результатами бэкенда
+
+    // Создание Map для быстрого доступа к локальным данным по ID
+    const localServicesMap = services.reduce((acc, service) => {
+        acc[service.id] = service;
+        return acc;
+    }, {});
+
+    // Фильтр локальных данных по результатам с API
+    const filteredServices = apiServices
+        .map(apiItem => {
+            const localItem = localServicesMap[apiItem.id];
+            if (localItem) {
+                // Если ID совпадает, объединяем данные.
+                return {
+                    ...localItem,
+                };
+            }
+            return null;
+        })
+        .filter(service => service !== null);
+    
+    const uniqueLocations = [...new Set(services.map((s) => s.location))];
+
+    
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const handleLogoClick = () => {
     setSelectedService(null);
@@ -184,27 +244,6 @@ const App = () => {
     setShowCart(false);
   };
 
-  const filteredServices = services.filter((service) => {
-    const matchesSearch = service.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const duration = parseFloat(service.duration);
-    const price = parseFloat(service.price.replace("$", ""));
-    const rating = parseFloat(service.rating);
-    const location = service.location;
-    return (
-      matchesSearch &&
-      duration >= filters.duration[0] &&
-      duration <= filters.duration[1] &&
-      price >= filters.price[0] &&
-      price <= filters.price[1] &&
-      rating >= filters.rating[0] &&
-      rating <= filters.rating[1] &&
-      (filters.location === "" || location === filters.location)
-    );
-  });
-
-  const uniqueLocations = [...new Set(services.map((s) => s.location))];
 
   const handleCardClick = (service) => setSelectedService(service);
   const closeOverlay = () => setSelectedService(null);
@@ -313,10 +352,14 @@ const App = () => {
         </div>
 
         <div className="services-list-container">
-          <ServicesList
-            services={filteredServices}
-            onCardClick={handleCardClick}
-          />
+            {loading ? (
+                <p style={{textAlign: 'center', marginTop: '50px'}}>Loading services...</p>
+            ) : (
+                <ServicesList
+                    services={filteredServices}
+                    onCardClick={handleCardClick}
+                />
+            )}
         </div>
       </div>
 
